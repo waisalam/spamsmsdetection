@@ -7,6 +7,7 @@ import SMSAnalyzer from '@/components/sms-analyzer';
 import Features from '@/components/features';
 import About from '@/components/about';
 import Footer from '@/components/footer';
+import FeedbackModal from '@/components/feedback-modal';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <About />
       </main>
       <Footer />
+      <FeedbackModal />
     </div>
   );
 }
