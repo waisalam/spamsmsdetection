@@ -28,6 +28,18 @@ def predict():
     'confidence':round(confidence,2)
 })
 
+@app.route('/feedback', methods=['POST'])
+def feedback():
+    data = request.json
+    feedback_type = data.get('type')
+    description = data.get('description')
+    email = data.get('email', None)
+    
+    app.logger.info(f"Feedback received - Type: {feedback_type}, Description: {description}, Email: {email}")
+    
+    return jsonify({
+        'message': 'Feedback submitted successfully'
+    }), 201
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
