@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 const posts = [
   {
@@ -55,59 +57,63 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-violet-600 via-indigo-500 to-blue-400 py-20 px-4 text-white">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-            Blog
-          </h1>
-          <p className="mt-4 text-lg text-white/80 sm:text-xl">
-            Insights, tutorials, and stories from our team.
-          </p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main className="flex-1 container mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-violet-600 via-indigo-500 to-blue-400 py-20 px-4 text-white">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+              Blog
+            </h1>
+            <p className="mt-4 text-lg text-white/80 sm:text-xl">
+              Insights, tutorials, and stories from our team.
+            </p>
+          </div>
+        </section>
 
-      {/* Posts Grid */}
-      <section className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <Card
-              key={post.id}
-              className="flex flex-col overflow-hidden bg-white/80 backdrop-blur-sm transition-shadow hover:shadow-lg"
-            >
-              <CardHeader className="space-y-1 p-6">
-                <CardTitle className="text-xl font-semibold leading-tight text-gray-900">
-                  {post.title}
-                </CardTitle>
-                <CardDescription className="text-sm text-gray-500">
-                  {new Date(post.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                  {" by "}
-                  <span className="font-medium text-gray-700">{post.author}</span>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-1 px-6 pb-4">
-                <p className="text-sm leading-relaxed text-gray-600">
-                  {post.excerpt}
-                </p>
-              </CardContent>
-              <CardFooter className="px-6 pb-6 pt-0">
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                >
-                  <Link href={`/blog/${post.slug}`}>Read More</Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      </section>
-    </>
+        {/* Posts Grid */}
+        <section className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <Card
+                key={post.id}
+                className="flex flex-col overflow-hidden bg-white/80 backdrop-blur-sm transition-shadow hover:shadow-lg"
+              >
+                <CardHeader className="space-y-1 p-6">
+                  <CardTitle className="text-xl font-semibold leading-tight text-gray-900">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm text-gray-500">
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                    {" by "}
+                    <span className="font-medium text-gray-700">{post.author}</span>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 px-6 pb-4">
+                  <p className="text-sm leading-relaxed text-gray-600">
+                    {post.excerpt}
+                  </p>
+                </CardContent>
+                <CardFooter className="px-6 pb-6 pt-0">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  >
+                    <Link href={`/blog/${post.slug}`}>Read More</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }
