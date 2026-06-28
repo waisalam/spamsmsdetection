@@ -22,6 +22,7 @@ export default function Header() {
             <Link href="#features" className="text-sm text-foreground/70 hover:text-foreground transition-colors">Features</Link>
             <Link href="#about" className="text-sm text-foreground/70 hover:text-foreground transition-colors">About</Link>
             <Link href="#analyzer" className="text-sm text-foreground/70 hover:text-foreground transition-colors">Analyzer</Link>
+            <Link href="/contact" className="text-sm text-foreground/70 hover:text-foreground transition-colors">Contact</Link>
           </nav>
           <div className="flex items-center gap-4">
             {!isSignedIn ? (
