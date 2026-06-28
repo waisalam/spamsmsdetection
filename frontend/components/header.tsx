@@ -20,7 +20,9 @@ export default function Header() {
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <Link href="#features" className="text-sm text-foreground/70 hover:text-foreground transition-colors">Features</Link>
+            <Link href="/how-it-works" className="text-sm text-foreground/70 hover:text-foreground transition-colors">How It Works</Link>
             <Link href="#about" className="text-sm text-foreground/70 hover:text-foreground transition-colors">About</Link>
+            <Link href="/blog" className="text-sm text-foreground/70 hover:text-foreground transition-colors">Blog</Link>
             <Link href="#analyzer" className="text-sm text-foreground/70 hover:text-foreground transition-colors">Analyzer</Link>
             <Link href="/contact" className="text-sm text-foreground/70 hover:text-foreground transition-colors">Contact</Link>
           </nav>
