@@ -140,6 +140,14 @@ function dispatch(action: Action) {
 type Toast = Omit<ToasterToast, 'id'>
 
 function toast({ ...props }: Toast) {
+  if (typeof document === 'undefined') {
+    return {
+      id: 'server',
+      dismiss: () => {},
+      update: () => {},
+    }
+  }
+
   const id = genId()
 
   const update = (props: ToasterToast) =>
@@ -180,6 +188,20 @@ function useToast() {
       }
     }
   }, [state])
+
+  if (typeof document === 'undefined') {
+    return {
+      ...state,
+      toast: (props: Toast) => {
+        return {
+          id: 'server',
+          dismiss: () => {},
+          update: () => {},
+        }
+      },
+      dismiss: (toastId?: string) => {},
+    }
+  }
 
   return {
     ...state,
