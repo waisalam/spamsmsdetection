@@ -27,10 +27,15 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white mb-4">Product</h4>
             <ul className="space-y-2">
-              {['Analyzer', 'Features', 'Pricing', 'Security'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
-                    {item}
+              {[
+                { label: 'Analyzer', href: '/analyzer' },
+                { label: 'Features', href: '/features' },
+                { label: 'Pricing', href: '/pricing' },
+                { label: 'Security', href: '/security' },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <Link href={href} className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
+                    {label}
                   </Link>
                 </li>
               ))}
@@ -41,10 +46,15 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white mb-4">Company</h4>
             <ul className="space-y-2">
-              {['About', 'Blog', 'Careers', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
-                    {item}
+              {[
+                { label: 'About', href: '/about' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Careers', href: '/careers' },
+                { label: 'Contact', href: '/contact' },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <Link href={href} className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
+                    {label}
                   </Link>
                 </li>
               ))}
@@ -55,10 +65,15 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white mb-4">Legal</h4>
             <ul className="space-y-2">
-              {['Privacy', 'Terms', 'Security', 'Cookies'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
-                    {item}
+              {[
+                { label: 'Privacy', href: '/privacy' },
+                { label: 'Terms', href: '/terms' },
+                { label: 'Security', href: '/security' },
+                { label: 'Cookies', href: '/cookies' },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <Link href={href} className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
+                    {label}
                   </Link>
                 </li>
               ))}
@@ -75,15 +90,15 @@ export default function Footer() {
             © {new Date().getFullYear()} SpamSMSAnalyzer. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors">
+            <a href="mailto:support@spamsmsanalyzer.com" className="text-gray-400 hover:text-gray-300 transition-colors" aria-label="Email">
               <Mail className="w-5 h-5" />
               <span className="sr-only">Email</span>
             </a>
-            <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors">
+            <a href="https://twitter.com/spamsmsanalyzer" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-300 transition-colors" aria-label="Twitter">
               <Twitter className="w-5 h-5" />
               <span className="sr-only">Twitter</span>
             </a>
-            <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors">
+            <a href="https://github.com/spamsmsanalyzer" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-300 transition-colors" aria-label="GitHub">
               <Github className="w-5 h-5" />
               <span className="sr-only">GitHub</span>
             </a>
