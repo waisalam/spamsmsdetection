@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
-
+import Link from 'next/link'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -38,14 +38,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-
       <ClerkProvider>
-      
-      <body className="font-sans antialiased bg-background text-foreground">
-      
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
+        <body className="font-sans antialiased bg-background text-foreground">
+          <nav className="border-b border-border bg-card px-4 py-3">
+            <div className="container mx-auto flex items-center justify-between">
+              <Link href="/" className="text-lg font-bold">
+                SpamSMS
+              </Link>
+              <div className="flex gap-6">
+                <Link href="/" className="text-sm hover:text-primary transition-colors">
+                  Home
+                </Link>
+                <Link href="/#features" className="text-sm hover:text-primary transition-colors">
+                  Features
+                </Link>
+                <Link href="/how-it-works" className="text-sm hover:text-primary transition-colors">
+                  How It Works
+                </Link>
+              </div>
+            </div>
+          </nav>
+          {children}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </body>
       </ClerkProvider>
     </html>
   )

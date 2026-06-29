@@ -1,7 +1,56 @@
-import { Shield, MessageSquare, MousePointerClick, BrainCircuit, Eye } from 'lucide-react';
+import {
+  Shield,
+  MessageSquare,
+  MousePointerClick,
+  BrainCircuit,
+  Eye,
+  Zap,
+  BarChart3,
+  Lock,
+  Globe,
+  CheckCircle,
+  Timer,
+  ThumbsUp,
+} from 'lucide-react';
 import Link from 'next/link';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
+
+/* -------------------------------------------------------------------------- */
+/*  Feature data                                                              */
+/* -------------------------------------------------------------------------- */
+const features = [
+  {
+    Icon: Zap,
+    title: 'Instant Analysis',
+    description: 'Get real-time spam verdicts in milliseconds—no waiting, no delays.',
+  },
+  {
+    Icon: BarChart3,
+    title: 'Confidence Scoring',
+    description: 'Every result includes a 0–100% confidence score so you know how certain the prediction is.',
+  },
+  {
+    Icon: Lock,
+    title: 'Privacy First',
+    description: 'Your SMS content is processed securely and never stored or shared.',
+  },
+  {
+    Icon: Globe,
+    title: 'Multi-Language Support',
+    description: 'The model handles common spam patterns across multiple languages and character sets.',
+  },
+  {
+    Icon: CheckCircle,
+    title: 'Accurate ML Model',
+    description: 'Trained on thousands of real SMS messages for high accuracy and low false positives.',
+  },
+  {
+    Icon: Timer,
+    title: 'Lightweight & Fast',
+    description: 'Optimized for speed—works great even on low-end devices and slow connections.',
+  },
+];
 
 /* -------------------------------------------------------------------------- */
 /*  Step data                                                                 */
@@ -111,21 +160,61 @@ export default function HowItWorksPage() {
             </p>
           </div>
 
-          {/* Steps timeline */}
-          <div className="relative">
-            {steps.map((step, idx) => (
-              <Step
-                key={step.number}
-                number={step.number}
-                Icon={step.Icon}
-                title={step.title}
-                description={step.description}
-                isLast={idx === steps.length - 1}
-              />
-            ))}
-          </div>
+          {/* Features grid */}
+          <section id="features" className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Key Features
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+                Everything you need to quickly and accurately detect spam SMS messages.
+              </p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {features.map((feature) => (
+                <div
+                  key={feature.title}
+                  className="rounded-xl border bg-card p-6 shadow-sm transition hover:shadow-md"
+                >
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <feature.Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold text-foreground">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
 
-          {/* Optional call‑to‑action */}
+          {/* Steps timeline */}
+          <section className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                How It Works
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+                The step‑by‑step process behind every spam check.
+              </p>
+            </div>
+            <div className="relative">
+              {steps.map((step, idx) => (
+                <Step
+                  key={step.number}
+                  number={step.number}
+                  Icon={step.Icon}
+                  title={step.title}
+                  description={step.description}
+                  isLast={idx === steps.length - 1}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* Call‑to‑action */}
           <div className="mt-16 text-center">
             <Link
               href="/"

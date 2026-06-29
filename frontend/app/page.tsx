@@ -8,6 +8,7 @@ import Features from '@/components/features';
 import About from '@/components/about';
 import Footer from '@/components/footer';
 import FeedbackModal from '@/components/feedback-modal';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -15,6 +16,11 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <div className="py-8 text-center">
+          <Link href="/features" className="text-primary hover:underline font-medium">
+            View All Features
+          </Link>
+        </div>
         <SMSAnalyzer />
         <Features />
         <About />
