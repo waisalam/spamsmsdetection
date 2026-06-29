@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
+import FeaturesRedirect from './features-redirect'
 
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -42,8 +43,9 @@ export default function RootLayout({
       <ClerkProvider>
       
       <body className="font-sans antialiased bg-background text-foreground">
-      
+        <FeaturesRedirect>
         {children}
+        </FeaturesRedirect>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
       </ClerkProvider>

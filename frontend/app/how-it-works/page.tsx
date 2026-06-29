@@ -69,7 +69,7 @@ function Step({
           <Icon className="h-5 w-5" />
         </div>
         {!isLast && (
-          <div className="h-full w-0.5 bg-border mt-2 mb-2" />
+          <div className="flex-1 w-0.5 bg-border" />
         )}
       </div>
 
