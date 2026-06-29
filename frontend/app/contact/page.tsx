@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -35,6 +36,19 @@ export default function ContactPage() {
             <p className="mt-4 text-lg text-muted-foreground">
               Have a question or project? We&apos;d love to hear from you.
             </p>
+          </div>
+        </section>
+
+        {/* Feature Page Callout Section */}
+        <section className="py-8 bg-accent/10">
+          <div className="container mx-auto text-center">
+            <h2 className="text-2xl font-bold">Discover Our Powerful Features</h2>
+            <p className="mt-2 text-muted-foreground">
+              See how we can help your business grow.
+            </p>
+            <Button asChild className="mt-4">
+              <Link href="/feature">Explore Features</Link>
+            </Button>
           </div>
         </section>
 
