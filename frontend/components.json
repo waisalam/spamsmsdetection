@@ -1,3 +1,4 @@
+# frontend/components.json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
@@ -18,4 +19,30 @@
     "hooks": "@/hooks"
   },
   "iconLibrary": "lucide"
+}
+# frontend/next-env.d.ts
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
+# frontend/lib/utils.ts
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+/**
+ * Checks if the feature page (`/features`) is available by sending a HEAD request.
+ * Returns true if the page returns a successful HTTP status, false otherwise.
+ */
+export async function isFeaturePageAvailable(): Promise<boolean> {
+  try {
+    const response = await fetch('/features', { method: 'HEAD' });
+    return response.ok;
+  } catch {
+    return false;
+  }
 }
