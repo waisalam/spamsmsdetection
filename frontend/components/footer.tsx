@@ -3,7 +3,7 @@ import { Mail, Github, Twitter } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-background relative overflow-hidden">
+    <footer className="border-t border-gray-800 bg-gray-900 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl opacity-20"></div>
       </div>
@@ -16,9 +16,9 @@ export default function Footer() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-primary-foreground text-sm">
                 S
               </div>
-              <span className="font-bold text-primary">SpamSMSAnalyzer</span>
+              <span className="font-bold text-white">SpamSMSAnalyzer</span>
             </div>
-            <p className="text-sm text-foreground/60 leading-relaxed">
+            <p className="text-sm text-gray-400 leading-relaxed">
               Protecting users from SMS threats with AI-powered detection.
             </p>
           </div>
@@ -29,7 +29,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {['Analyzer', 'Features', 'Pricing', 'Security'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-sm text-foreground/60 hover:text-primary transition-colors">
+                  <Link href="#" className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -43,7 +43,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {['About', 'Blog', 'Careers', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-sm text-foreground/60 hover:text-primary transition-colors">
+                  <Link href="#" className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -57,7 +57,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {['Privacy', 'Terms', 'Security', 'Cookies'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-sm text-foreground/60 hover:text-primary transition-colors">
+                  <Link href="#" className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -67,23 +67,23 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-border mb-8"></div>
+        <div className="border-t border-gray-800 mb-8"></div>
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between">
-          <p className="text-sm text-foreground/60 text-center md:text-left mb-4 md:mb-0">
+          <p className="text-sm text-gray-400 text-center md:text-left mb-4 md:mb-0">
             © {new Date().getFullYear()} SpamSMSAnalyzer. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
+            <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors">
               <Mail className="w-5 h-5" />
               <span className="sr-only">Email</span>
             </a>
-            <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
+            <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors">
               <Twitter className="w-5 h-5" />
               <span className="sr-only">Twitter</span>
             </a>
-            <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
+            <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors">
               <Github className="w-5 h-5" />
               <span className="sr-only">GitHub</span>
             </a>
