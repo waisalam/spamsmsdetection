@@ -22,7 +22,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
-import { Loader2, MessageSquarePlus } from "lucide-react";
+import { Loader2, MessageSquarePlus, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 const FEEDBACK_TYPES = [
   { value: "bug", label: "Bug" },
@@ -129,6 +130,8 @@ export default function FeedbackModal() {
     []
   );
 
+  const isFeatureRequest = formData.type === "feature";
+
   return (
     <>
       {/* Floating Action Button */}
@@ -171,6 +174,24 @@ export default function FeedbackModal() {
                     </SelectContent>
                   </Select>
                 </div>
+
+                {isFeatureRequest && (
+                  <div className="flex items-center gap-2 rounded-lg border bg-muted/50 p-3">
+                    <ExternalLink className="h-4 w-4 flex-shrink-0 text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">
+                      Before requesting a new feature, check out the existing ones.
+                    </span>
+                    <Link
+                      href="/features"
+                      className="ml-auto text-sm font-medium underline underline-offset-4 hover:text-primary"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Browse Features
+                    </Link>
+                  </div>
+                )}
+
                 <div className="grid gap-2">
                   <Label htmlFor="feedback-description">Description</Label>
                   <Textarea

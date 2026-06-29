@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { Spinner } from '@/components/ui/spinner';
 import { AlertCircle, CheckCircle, AlertTriangle } from 'lucide-react';
+import Link from 'next/link';
 
 type AnalysisResult = {
   status: 'spam' | 'safe' | 'suspicious';
@@ -106,6 +107,12 @@ export default function SMSAnalyzer() {
           <p className="text-lg text-foreground/70">
             Paste any SMS message below to get instant AI-powered analysis
           </p>
+          <div className="mt-6">
+            <Link href="/features" className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+              <span>View Features</span>
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </Link>
+          </div>
         </div>
 
         <Card className="border border-border bg-card/50 backdrop-blur p-8">
