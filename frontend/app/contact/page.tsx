@@ -5,20 +5,42 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { MapPin, Phone, Mail, Send } from "lucide-react"
+import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    setLoading(true)
+    setError(null)
+
     const formData = new FormData(event.currentTarget)
-    // In production, send formData to your API
-    console.log(Object.fromEntries(formData.entries()))
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
+    const data = Object.fromEntries(formData.entries())
+
+    try {
+      const response = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred"
+      )
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -109,8 +131,23 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full" disabled={submitted}>
-                      {submitted ? (
+                    {error && (
+                      <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                        {error}
+                      </div>
+                    )}
+
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={loading || submitted}
+                    >
+                      {loading ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : submitted ? (
                         "Message Sent!"
                       ) : (
                         <>

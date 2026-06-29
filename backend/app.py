@@ -41,5 +41,18 @@ def feedback():
         'message': 'Feedback submitted successfully'
     }), 201
 
+@app.route('/contact', methods=['POST'])
+def contact():
+    data = request.json
+    name = data.get('name')
+    email = data.get('email')
+    message = data.get('message')
+    
+    app.logger.info(f"Contact form submission - Name: {name}, Email: {email}, Message: {message}")
+    
+    return jsonify({
+        'message': 'Contact form submitted successfully'
+    }), 201
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
