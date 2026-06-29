@@ -7,7 +7,7 @@ export default function Header() {
   const { isSignedIn } = useAuth();
 
   return (
-    <header className="border-b border-border sticky top-0 z-50 bg-black/80 backdrop-blur-md">
+    <header className="border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center gap-2">
