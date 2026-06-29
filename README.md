@@ -24,6 +24,24 @@ https://spamsmsdetection-r49y.onrender.com/
 
 ---
 
+## Analyze SMS
+
+The application provides a dedicated `/analyze` page where users can directly input an SMS message and get an instant spam prediction. This page is designed for quick, one-off checks and is accessible even if other navigation links are unavailable.
+
+**How to access:**  
+You can open the Analyze SMS page directly by visiting:
+
+[https://spamsmsdetection.vercel.app/analyze](https://spamsmsdetection.vercel.app/analyze)
+
+**What it does:**  
+1. Type or paste any SMS text into the input field  
+2. Click the **Analyze** button  
+3. The system will display whether the message is **Spam** or **Safe**, along with a confidence score (percentage)  
+
+This page bypasses the need to sign in or navigate through the app, making it a reliable fallback when other links may be missing or unaccessible.
+
+---
+
 ## Tech Stack
 
 ### Frontend
@@ -74,5 +92,4 @@ Accuracy achieved on test dataset:
 ### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/spamsmsdetection.git<img width="1882" height="877" alt="Screenshot 2026-05-24 131536" src="https://github.com/user-attachments/assets/a5cdd8db-91db-4585-ae41-e64cfae4e844" />
-<img width="1870" height="886" alt="Screenshot 2026-05-24 131440" src="https://github.com/user-attachments/assets/a35ad63f-955f-441d-b925-8485f437aaf4" />
+git clone https://github.com/yourusername/spamsmsdetection.git
