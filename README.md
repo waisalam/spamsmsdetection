@@ -14,6 +14,8 @@ https://spamsmsdetection-r49y.onrender.com/
 
 ## Features
 
+**Note:** The main SMS analysis interface is located at `/analyze` and is fully functional. If you encounter references to a separate "features" page, that implementation is handled independently and may not be currently active, to avoid any confusion from broken redirects.
+
 - Spam SMS Detection using Machine Learning
 - Real-time message analysis
 - Confidence score prediction
