@@ -23,6 +23,7 @@ export default function Header() {
             <Link href="/how-it-works" className="text-sm text-white hover:text-gray-300 transition-colors">How It Works</Link>
             <Link href="#about" className="text-sm text-white hover:text-gray-300 transition-colors">About</Link>
             <Link href="/blog" className="text-sm text-white hover:text-gray-300 transition-colors">Blog</Link>
+            <Link href="/pricing" className="text-sm text-white hover:text-gray-300 transition-colors">Pricing</Link>
             <Link href="#analyzer" className="text-sm text-white hover:text-gray-300 transition-colors">Analyzer</Link>
             <Link href="/contact" className="text-sm text-white hover:text-gray-300 transition-colors">Contact</Link>
           </nav>

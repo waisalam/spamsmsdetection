@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-primary-foreground text-sm">
+              <div className="w-8 h-8 rounded-lg bg-linear-to-br from-primary to-accent flex items-center justify-center font-bold text-primary-foreground text-sm">
                 S
               </div>
               <span className="font-bold text-white">SpamSMSAnalyzer</span>
@@ -29,7 +29,10 @@ export default function Footer() {
             <ul className="space-y-2">
               {['Analyzer', 'Features', 'Pricing', 'Security'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
+                  <Link
+                    href={item === 'Pricing' ? '/pricing' : '#'}
+                    className="text-sm text-gray-400 hover:text-gray-300 transition-colors"
+                  >
                     {item}
                   </Link>
                 </li>
