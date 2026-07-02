@@ -18,15 +18,15 @@ export default function Header() {
               SpamSMSAnalyzer
             </Link>
           </div>
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="#features" className="text-sm text-white hover:text-gray-300 transition-colors">Features</Link>
-            <Link href="/pricing" className="text-sm text-white hover:text-gray-300 transition-colors">Pricing</Link>
-            <Link href="/how-it-works" className="text-sm text-white hover:text-gray-300 transition-colors">How It Works</Link>
-            <Link href="#about" className="text-sm text-white hover:text-gray-300 transition-colors">About</Link>
-            <Link href="/blog" className="text-sm text-white hover:text-gray-300 transition-colors">Blog</Link>
-            <Link href="#analyzer" className="text-sm text-white hover:text-gray-300 transition-colors">Analyzer</Link>
-            <Link href="/contact" className="text-sm text-white hover:text-gray-300 transition-colors">Contact</Link>
-          </nav>
+          <ul className="hidden md:flex items-center gap-8 list-none">
+            <li><Link href="#features" className="text-sm text-white hover:text-gray-300 transition-colors">Features</Link></li>
+            <li><Link href="/pricing" className="text-sm text-white hover:text-gray-300 transition-colors">Pricing</Link></li>
+            <li><Link href="/how-it-works" className="text-sm text-white hover:text-gray-300 transition-colors">How It Works</Link></li>
+            <li><Link href="#about" className="text-sm text-white hover:text-gray-300 transition-colors">About</Link></li>
+            <li><Link href="/blog" className="text-sm text-white hover:text-gray-300 transition-colors">Blog</Link></li>
+            <li><Link href="#analyzer" className="text-sm text-white hover:text-gray-300 transition-colors">Analyzer</Link></li>
+            <li><Link href="/contact" className="text-sm text-white hover:text-gray-300 transition-colors">Contact</Link></li>
+          </ul>
           <div className="flex items-center gap-4">
             {!isSignedIn ? (
               <>
