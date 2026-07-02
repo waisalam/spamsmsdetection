@@ -56,7 +56,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {['About', 'Blog', 'Careers', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
+                  <Link href={item === 'Contact' ? '/contact' : '#'} className="text-sm text-gray-400 hover:text-gray-300 transition-colors">
                     {item}
                   </Link>
                 </li>

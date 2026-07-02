@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -10,15 +10,30 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false)
+  const [emailError, setEmailError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget)
+    const form = event.currentTarget
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value
+
+    // Email validation regex
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailError("Please enter a valid email")
+      return
+    }
+
+    // Clear any previous error
+    setEmailError(null)
+
     // In production, send formData to your API
+    const formData = new FormData(form)
     console.log(Object.fromEntries(formData.entries()))
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
+
+    setSuccess(true)
+    formRef.current?.reset()
   }
 
   return (
@@ -43,83 +58,91 @@ export default function ContactPage() {
           <Card className="max-w-6xl mx-auto shadow-lg border-0 rounded-xl">
             <CardContent className="p-6 md:p-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                {/* Left Column: Contact Form */}
+                {/* Left Column: Contact Form or Success Message */}
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="name"
-                        className="text-sm font-medium leading-none"
-                      >
-                        Full Name
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        placeholder="John Doe"
-                        required
-                      />
+                  {success ? (
+                    <div className="flex flex-col items-center justify-center h-full min-h-[300px] text-center space-y-4">
+                      <h3 className="text-2xl font-bold">Thank you for your message!</h3>
+                      <p className="text-muted-foreground">
+                        We&apos;ll get back to you as soon as possible.
+                      </p>
                     </div>
+                  ) : (
+                    <>
+                      <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
+                      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" noValidate>
+                        <div className="space-y-2">
+                          <label
+                            htmlFor="name"
+                            className="text-sm font-medium leading-none"
+                          >
+                            Full Name
+                          </label>
+                          <Input
+                            id="name"
+                            name="name"
+                            placeholder="John Doe"
+                            required
+                          />
+                        </div>
 
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="email"
-                        className="text-sm font-medium leading-none"
-                      >
-                        Email Address
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="john@example.com"
-                        required
-                      />
-                    </div>
+                        <div className="space-y-2">
+                          <label
+                            htmlFor="email"
+                            className="text-sm font-medium leading-none"
+                          >
+                            Email Address
+                          </label>
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="john@example.com"
+                            required
+                          />
+                          {emailError && (
+                            <p className="text-sm text-destructive mt-1">{emailError}</p>
+                          )}
+                        </div>
 
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="subject"
-                        className="text-sm font-medium leading-none"
-                      >
-                        Subject
-                      </label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        placeholder="How can we help?"
-                        required
-                      />
-                    </div>
+                        <div className="space-y-2">
+                          <label
+                            htmlFor="subject"
+                            className="text-sm font-medium leading-none"
+                          >
+                            Subject
+                          </label>
+                          <Input
+                            id="subject"
+                            name="subject"
+                            placeholder="How can we help?"
+                            required
+                          />
+                        </div>
 
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="message"
-                        className="text-sm font-medium leading-none"
-                      >
-                        Message
-                      </label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        placeholder="Tell us about your project..."
-                        rows={5}
-                        required
-                      />
-                    </div>
+                        <div className="space-y-2">
+                          <label
+                            htmlFor="message"
+                            className="text-sm font-medium leading-none"
+                          >
+                            Message
+                          </label>
+                          <Textarea
+                            id="message"
+                            name="message"
+                            placeholder="Tell us about your project..."
+                            rows={5}
+                            required
+                          />
+                        </div>
 
-                    <Button type="submit" className="w-full" disabled={submitted}>
-                      {submitted ? (
-                        "Message Sent!"
-                      ) : (
-                        <>
+                        <Button type="submit" className="w-full">
                           <Send className="mr-2 h-4 w-4" />
                           Send Message
-                        </>
-                      )}
-                    </Button>
-                  </form>
+                        </Button>
+                      </form>
+                    </>
+                  )}
                 </div>
 
                 {/* Right Column: Contact Information and Map */}
