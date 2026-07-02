@@ -4,37 +4,43 @@ import PricingCard from '@/components/pricing-card';
 
 const plans = [
   {
-    name: 'Free',
-    price: '$0/month',
+    plan: 'Free',
+    price: '$0',
+    period: '/month',
+    description: 'Basic SMS analysis',
     features: [
       'Basic SMS analysis',
       'Limited daily requests',
       'Email support',
     ],
-    ctaText: 'Get Started',
-    ctaLink: '/sign-up',
+    buttonLabel: 'Get Started',
+    buttonHref: '/sign-up',
   },
   {
-    name: 'Pro',
-    price: '$9.99/month',
+    plan: 'Pro',
+    price: '$9.99',
+    period: '/month',
+    description: 'Unlimited analysis',
     features: [
       'Unlimited analysis',
       'Priority support',
       'Detailed reports',
     ],
-    ctaText: 'Subscribe',
-    ctaLink: '/subscribe-pro',
+    buttonLabel: 'Subscribe',
+    buttonHref: '/subscribe-pro',
   },
   {
-    name: 'Enterprise',
+    plan: 'Enterprise',
     price: 'Custom pricing',
+    period: '',
+    description: 'Dedicated support',
     features: [
       'Dedicated support',
       'Custom integration',
       'SLA',
     ],
-    ctaText: 'Contact Us',
-    ctaLink: '/contact',
+    buttonLabel: 'Contact Us',
+    buttonHref: '/contact',
   },
 ];
 
@@ -51,12 +57,14 @@ export default function PricingPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {plans.map((plan) => (
                 <PricingCard
-                  key={plan.name}
-                  name={plan.name}
+                  key={plan.plan}
+                  plan={plan.plan}
                   price={plan.price}
+                  period={plan.period}
+                  description={plan.description}
                   features={plan.features}
-                  ctaText={plan.ctaText}
-                  ctaLink={plan.ctaLink}
+                  buttonLabel={plan.buttonLabel}
+                  buttonHref={plan.buttonHref}
                 />
               ))}
             </div>
