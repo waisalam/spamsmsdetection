@@ -14,19 +14,19 @@ export default function Home() {
   const testimonials = [
     {
       quote: "This app has completely transformed how I manage my messages. The scam detection alone has saved me from multiple phishing attempts. Highly recommended!",
-      authorName: "Sarah Johnson",
+      author: "Sarah Johnson",
       role: "Freelance Designer",
       avatarInitial: "S"
     },
     {
       quote: "I love the sentiment analysis. It's so accurate and helpful for quickly identifying important messages. The UI is clean and intuitive.",
-      authorName: "Michael Chen",
+      author: "Michael Chen",
       role: "Software Engineer",
       avatarInitial: "M"
     },
     {
       quote: "A must-have tool for anyone drowning in SMS clutter. The categorization feature helps me stay organized, and the writing assistance is a game-changer.",
-      authorName: "Emily Rodriguez",
+      author: "Emily Rodriguez",
       role: "Marketing Manager",
       avatarInitial: "E"
     }
@@ -52,7 +52,7 @@ export default function Home() {
                 <TestimonialCard
                   key={index}
                   quote={testimonial.quote}
-                  authorName={testimonial.authorName}
+                  author={testimonial.author}
                   role={testimonial.role}
                   avatarInitial={testimonial.avatarInitial}
                 />
